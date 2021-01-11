@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript 성적처리</title>
+    <script>
+        /*
+            한 명의 성적 입력 받아 결과 출력
+            -입력값 : 이름 , 국어 , 영어, 수힉 점수 (화면입력 : prompt)
+            -계산처리 : 총점 평균
+            -결과출력 : 브라우저 화면에 결과 출력
+            -----------------------------------------------------
+            이름 : 홍길동
+            국어 : 100
+            영어 : 90
+            수학 : 80
+            ----------------
+            총점 : 270
+            평균 : 90.0(소수점 이라 2자리)
+        */
+        alert("성적을 보여줍니다.");
+        
+        var name = prompt("[이름] 이름을 입력하세여 \n(반드시 입력하세요)" , "이름입력");
+        var kor = prompt("[국어점수] 국어 점수를 입력학세여 /n 입력안하면 0 ", "22");
+        var eng = prompt("[영어점수] 영어 점수를 입력학세여 /n 입력안하면 0 ", "23");
+        var math = prompt("[수학점수] 수학 점수를 입력학세여 /n 입력안하면 0 ", "28");
+//        alert(">>>> 이름 : " + name);
+//        alert(">>>> 국어 : " + kor);
+//        alert(">>>> 영어 : " + eng);
+//        alert(">>>> 수학 : " + math);
+//        
+        document.write("이름 : " + name,"<br>");
+        document.write("국어: " + kor,"<br>");
+        document.write("영어: " + eng,"<br>");
+        document.write("수학: " + math,"<br>");
+        
+        var sum = parseInt(kor) + parseInt(eng) + parseInt(math)
+        document.write("총점 : " + sum, "<br>");
+        var avg = (sum*100)/3/100.0;
+        document.write("평균 : " + avg.toFixed(2), "<br>");      
+        
+        
+        
+        
+    </script>
+</head>
+<body>
+    
+    
+</body>
+
+    
+    
+    
+<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
+    
+    
+</html>
