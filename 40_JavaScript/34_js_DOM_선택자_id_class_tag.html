@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DOM 선택 id, class, tag명</title>
+    <script>
+        /*
+            DOM  객체 선택시 사용할 메소드
+            document.getElementById("id명") : id 속성 요소 1개 리턴
+            document.getElementsByTagName('태그명') ; 태그명에 해당하는 요소들 리턴(배열형태)
+            document.getElementClassName('클래스명') : class속성명에 해당하는 요소들 리턴(배열형태)
+            //---------------
+            document.querySelector("선택자") : 선택자에 해당하는 첫번쨰 요소(단수)
+            document.querySelectorAll("선택자") : 선택자에 해당하는 모든 요소(복수-배열형태)
+        */
+        // THML 요소를 못찾음
+        var title = document.getElementById("title");
+        console.log("script 시작지점 title : " + title); // null
+        
+        // 브라우저 문서가 모두 로딩 완료되면 발생하는 이벤트 onload에 콜백함수 작성
+        window.onload = function(){
+            var title = document.getElementById("title");
+            console.log("onload 이벤트 title : " + title);    
+            // document.getElementById("title").style.color = "red"; // 비효율적
+            title.style.color = "blue";
+            title.style.backgroundColor = "yellow"; //CSS : background-color
+            //document.getElementsByTagName('태그명') ; 태그명에 해당하는 요소들 리턴(배열형태)
+            console.log(document.getElementsByTagName('h1')); // HTMLCollection
+            
+            document.getElementsByTagName('h1')[0].style.color = "red"; // 번호로 명확하게 지정해준다
+            
+            // document.getElementClassName('클래스명') : class속성명에 해당하는 요소들 리턴(배열형태)
+            var clFoodList = document.getElementsByClassName("foodList");
+            clFoodList[0].style.backgroundColor = "magenta";
+            clFoodList[1].style.backgroundColor = "aqua";
+            
+            //===============================================================
+            // id명으로 찾기
+            var div1 = document.getElementById("food_1");
+            div1.style.backgroundColor = "orange";
+            div1.style.border = "2px solid black";
+            
+            // 태그명으로 찾기
+            var list = document.getElementsByTagName("li");
+            list[2].style.backgroundColor = "gray";
+            
+            //========================================================
+            // 체이닝 방식으로 연속 작성
+            var foodList = document.getElementById("food_1")
+                                    .getElementsByTagName("li")[1];
+            foodList.style.backgroundColor = "green";
+            foodList.style.color = "red";
+            
+            //===========================================================================
+            //document.querySelector("선택자") : 선택자에 해당하는 첫번쨰 요소(단수)
+            //document.querySelector("선택자") : 선택자의 선택된 첫번째 요소 리턴
+            var selOne = document.querySelector("div > h2"); // h2태그 한식 만 석택됨
+            selOne.style.backgroundColor = "gray";
+            
+//            document.querySelectorAll("선택자") : 선택자에 해당하는 모든 요소(복수-배열형태)
+            var selAll = document.querySelectorAll("div > h2"); // h2태그 한식, 양식 2개 선택됨
+            selAll[0].style.border = "3px solid blue";
+            selAll[1].style.border = "3px solid blue";
+           
+            for (let i = 0; i < selAll.length; i++) {
+            selAll[i].style.color = "red";
+            }
+            // 양식 리스트에 항목 추가하기
+            let foodList2 = document.querySelector("#food_2 > ol");
+            // let htmlTags = foodList2.innerHTML;
+            // htmlTags += "<li>짜장면</li>";
+            // foodList2.innerHTML = htmlTags;
+            foodList2.innerHTML += "<li>짜장면</li>"; // 위 3줄을 요약하면 이렇게 가능
+        };
+        
+        
+    </script>
+    
+    <style>
+        div > h2 { font-size : 3em; } /*h2태그 한식 양식 2개 선택됨*/
+
+    </style>
+</head>
+<body>
+    <h1>좋아하는 음식</h1>
+    <h2>한식, 중식</h2>
+    <div id="food_1">
+        <h2 id="title">한식</h2>
+        <ol class="foodList">
+            <li>
+                <a href="#">김치</a>
+            </li>
+            <li>불고기</li>
+            <li>비빔밥</li>
+        </ol>
+    </div>
+    <div id="food_2">
+         <h2 id="title">양식</h2>
+        <ol class="foodList">
+            <li>돈까스</li>
+            <li>파스타</li>
+        </ol>
+    </div>
+    
+
+    
+
+    
+<br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br> 
+</body>
+
+    
+    
+
+    
+    
+</html>
