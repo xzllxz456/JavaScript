@@ -36,20 +36,21 @@
             scrollbar : 스크롤 바 표시 여부 (yes, no, 1, 0)
         */
         
-        function windowOpen() {
-//            alert("windowOpen 실행");
-            var pop = window.open("http://www.naver.com", "pop1", 
-                        "width=400, height=250, top=100, left=150");
-//                        var pop = window.open("http://www.naver.com", "pop1", 
-//                        "width=400, height=250, top=100, left=150", "menubar=1");
-        }
-        function windowOpen() {
-//            alert("windowOpen 실행");
-            var pop = window.open("http://www.daum.net", "pop1", 
-                        "width=400, height=250, top=100, left=150", "menubar=yes, status=1, toolbar=1,location=1, scrolbar=1");
-//                        var pop = window.open("http://www.naver.com", "pop1", 
-//                        "width=400, height=250, top=100, left=150", "menubar=1");
-        }
+    function windowOpen() {
+        //alert("windowOpen() 실행");
+        var pop = window.open("http://www.naver.com", "pop1",
+            "width=400, height=250, top=100, left=150");
+    }
+    function windowOpen() {
+        //alert("windowOpen() 실행");
+        var pop = window.open("http://www.daum.net", "pop1",
+            "width=400, height=250, top=100, left=150, menubar=1, status=1, toolbar=1, location=1");
+    }
+    function windowOpen_coffee() {
+        //alert("windowOpen_coffee() 실행");
+        let coffee = window.open("26_js_BOM_window-close.html", "coffee",
+            "width=400, height=250, top=100, left=150, menubar=1, status=1, toolbar=1, location=1");
+    }
         
         function windowOpen_coffee(){
 //            alert("windowOpen_coffee() 실행");

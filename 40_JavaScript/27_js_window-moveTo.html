@@ -11,7 +11,7 @@
 <body>
     <h2>윈도우 열고 이동시키기</h2>
     <button onclick="openWin()">윈도우 열기(window.open)</button>
-    <button onclick="moveToWin()">윈도우 이동(window.moveTo)</button>
+    <button onclick="moveToWin1()">윈도우 이동(window.moveTo)</button>
 
 <script>
     window.document.write("<hr>");
@@ -22,13 +22,14 @@
     function openWin() {
         myWindow = window.open("", "myWindow", "width=200, height=200");
         myWindow.document.write("<p>새로 열린 윈도우</p>");
+
     }
-    
-    function moveToWin(){
-        myWindow.moveTo(300,200); //left, top;
-        myWindow.moveTo(1920+300,200); //left, top;
-        
-        myWindow.focus();
+
+    function moveToWin1(){
+//        myWindow.moveTo(300,200); //left, top;
+        myWindow.moveTo(1920,200); //left, top;
+         myWindow.focus();
+       
     }
 </script>
 <br><br><br><br><br><br><br><br><br><br><br>

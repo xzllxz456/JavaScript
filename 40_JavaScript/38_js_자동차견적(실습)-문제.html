@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>자동차 견적</title>
+<style>
+    #carZone {
+        width: 600px;
+        margin: auto;
+    }
+    
+    h1 {text-align: center};
+    
+    #car {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+    
+    #car th, td{
+        border: 1px solid black;
+        text-align: center;
+    }
+    
+    
+    
+</style>  
+<script>
+    let total;
+    let totalValue = 0;
+    window.onload = function(){
+
+        total = document.getElementById("total");
+        totalValue = parseInt(total.value);
+        
+        let opt1 = document.getElementById("opt1");
+        opt1.onchange = optChanged;
+        
+        let opt2 = document.getElementById("opt2");
+        opt2.onchange = optChanged;
+        
+        let opt3 = document.getElementById("opt3");
+        opt3.onchange = optChanged;
+    };
+    
+    function optChanged() {
+//        console.log(this.value);
+        if(this.checked){
+            totalValue += parseInt(this.value);
+        }else {
+            totalValue -= parseInt(this.value);
+        }
+        total.value = totalValue;
+    }
+    
+    /*
+        window.onload = function() {
+
+        let calc = function () {
+            totalValue = baseValue;
+            for (let opt of opts) {
+                if (opt.checked) {
+                    totalValue += parseInt(opt.value);
+                }
+            }
+        
+            total.value = totalValue;
+        }
+        
+        total = document.getElementById("total");
+        totalValue = parseInt(total.value);
+        let baseValue = parseInt(total.value);
+
+        let opts = document.querySelectorAll(".opt");
+        
+//        opts.forEach(function(option) {
+        opts.forEach((opt) => {
+           opt.onclick = calc;
+        });
+    */
+    
+    
+</script>
+</head>
+<body>
+<div id="carZone">   
+	<h1>자동차 견적</h1>
+    <p><img src="images/car1.jpg" alt="자동차이미지"></p>
+    <table id="car">
+        <colgroup>
+            <col width="50%">
+            <col width="30%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>옵션</th>
+                <th>추가가격</th>
+                <th>선택여부</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>인조가죽시트</td>
+                <td>250000</td>
+                <td>
+                    <input type="checkbox" value="250000" id="opt1" class="opt" name="opt1">
+                </td>
+            </tr>
+            <tr>
+                <td>네비게이션</td>
+                <td>300000</td>
+                <td>
+                    <input type="checkbox" value="300000" id="opt2" class="opt" name="opt2">
+                </td>
+            </tr>
+            <tr>
+                <td>썬루프</td>
+                <td>440000</td>
+                <td>
+                    <input type="checkbox" value="440000" id="opt3" class="opt" name="opt3">
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td id="totalTxt">차량금액(옵션포함)</td>
+                <td colspan="2">
+                    <input type="text" value="20000000" id="total" disabled>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+    
+    
+        
+	<br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
