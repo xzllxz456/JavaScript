@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>이미지 전환</title>
+    <!-- jQuery import 방식2 : CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    // prev, next 버튼이 클릭되었을 때 처리
+    // prev : 이전 이미지 표시, next : 다음 이미지 표시
+    // 배열에 저장된 이미지 파일명 사용해서 이미지 표시
+    // 배열 인덱스 0: bimg01.jpg, 1: bimg02.jpg, ...
+    // var imgName = ["bimg01.jpg", "bimg02.jpg", ...];
+    let imgName = new Array();
+    for (let i = 0; i < 10; i++) {
+        let imgNum = i + 1;
+        if (imgNum < 10) {
+            imgName[i] = "bimg0" + imgNum + ".jpg";
+        }else {
+            imgName[i] = "bimg" + imgNum + ".jpg";
+        }
+        console.log(i + " : " + imgName[i]);
+    }
+    
+    $(document).ready(function(){
+        // $("img").prop("src", "images/" + imgName[0]); // 첫번째 이미지로 설정
+
+        let imgIndex = 0; // 배열의 인덱스 번호
+        changeImg();
+
+        // next 버튼 클릭시 : 다음 이미지 표시(img 태그의 src 속성 변경)
+        $("#next").click(function(){
+            imgIndex++;
+            // if (imgIndex >= imgName.length) imgIndex = 0; // 처음 이미지로 변경
+            // $("img").prop("src", "images/" + imgName[imgIndex]);
+            changeImg();
+        });
+
+        $("#prev").click(function(){
+            imgIndex--;
+            // if (imgIndex < 0) {
+            //     imgIndex = imgName.length - 1; //배열의 마지막 인덱스 번호
+            // }
+            // $("img").prop("src", "images/" + imgName[imgIndex]);
+            changeImg();
+        });
+
+        function changeImg() {
+            if (imgIndex < 0) {
+                imgIndex = imgName.length - 1;
+            }
+            imgIndex %= imgName.length;
+            // $("img").prop("src", "images/" + imgName[imgIndex]);
+            $("img").each(function (index, el) {
+                let realIndex = (imgIndex + index) % imgName.length;
+                $(el).prop("src", "images/" + imgName[realIndex]);
+            });
+        }
+    });
+    
+    
+</script>
+<style>
+
+    div { 
+        width: 320px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    div>a {
+         /* 위치설정 */
+        position: absolute;
+        top: 150px; left: -40px;
+         /* 모양, 색상 */
+        background-color: rgb(36, 35, 48);
+        width: 50px; height: 40px;
+        border-radius: 20%;
+        /* 텍스트 설정 */
+        text-decoration: none;
+        text-align: center;
+        line-height: 40px; /* 세로방향 중앙정렬 */
+    }
+
+    div>a:visited { color : rgb(235, 235, 235); }
+
+    #next { left: 310px; }
+
+</style>
+</head>
+<body>
+    <div>
+        <img src="images/bimg01.jpg" alt="상품이미지">
+        <img src="images/bimg01.jpg" alt="상품이미지">
+        <img src="images/bimg01.jpg" alt="상품이미지">
+        <a id="prev" href="#">prev</a>
+        <a id="next" href="#">next</a>
+    </div>
+</body>
+</html>

@@ -85,10 +85,21 @@
                 }))
 
                 let $tbody = $("<tbody/>");
-                
+                $tbody.append(function(){
+                    let returnval = [];
+                    for(let r=1; r<=row; r++){
+                        let $tr = $("<tr/>");
+                        for(let c=1; c<=col; c++){
+                            $tr.append($("<td/>").text("데이터" + r + ", " + c));
+                        }
+                        returnval[r-1]=$tr;
+                    }
+                    return returnval;
+                });
+
                 $table.append($thead).append($tbody);
 
-                $myDiv1 = $("#myDiv").append($table);
+                $myDiv1 = $("#myDiv").html($table);
 
             });
             

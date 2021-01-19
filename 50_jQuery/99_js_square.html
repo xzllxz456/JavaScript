@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Moving Item</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        button {
+            margin-top : 15px;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        var a = 10;
+        var a = 20
+
+        $(function () {
+            let baseLeft = 0;
+            let isRed = true;
+
+            $("#right").click(function () {
+                ani(100, 180);
+            });
+
+            $("#left").click(function () {
+                ani(-100, -180);
+            });
+
+
+            function ani(x, deg) {
+                let color = isRed ? "blue" : "red";
+                isRed = !isRed;
+
+                let $buttons = $("button");
+                $buttons.prop("disabled", true);
+
+                $("div").css({
+                    "background-color": color,
+                    "transform": "translateX(" + x + "px) rotate(" + deg + "deg)",
+                    "transition-duration": "0.5s"
+                });
+
+                setTimeout(function () {
+                    baseLeft += x;
+                    $("div").css({
+                        "position": "relative",
+                        "left": baseLeft + "px",
+                        "transform": "none",
+                        "transition-duration": "0s"
+                    })
+                    $buttons.prop("disabled", false);
+                }, 500);
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div></div>
+    <button id="left">left</button>
+    <button id="right">right</button>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- jQuery import 방식1-->
+    <!--    <script src="js/jquery-3.5.1.min.js"></script>-->
+    <!-- jQuery import 방식 2 : CDN-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#empty").click(function(){
+                //empty() : 기준태그의 자녀(자손)태그(내용) 모두 삭제
+                $("#myDiv").empty();
+            });
+            
+            $("#remove").click(function(){
+                //remove() : 기준(선택) 태그 삭제
+                $("#myDiv").remove();
+            });
+            
+            $("#append").click(function(){
+                //append() : 자녀태그 추가
+                $("#myDiv").append("<p>append 버튼으로 추가</p>");
+            });
+            
+            $("#html").click(function(){
+                //html() : 기준 (선택)태그 내에 html 요소 읽기, 쓰기 
+                $("#myDiv").html("<p>html() 버튼으로 사용 추가</p>");   // 기존내용 삭제 후 바꿔치기
+            });
+            
+            $("#html2").click(function(){
+                let divHtml = $("#myDiv").html();
+                //html() : 기준 (선택)태그 내에 html 요소 읽기, 쓰기 
+                console.log("myDiv html : " + divHtml/*$("#myDiv").html()*/);
+                $("#myDiv").html(/*$("#myDiv").html() */ divHtml + "<p>html() 버튼으로 사용 추가</p>");   // 기존내용 삭제 후 바꿔치기
+            });
+
+            
+        });
+    </script>
+    <style>
+        #myDiv{ border: 2px solid blue; height: 200px; }
+        p { background-color: yellow; }
+    </style>
+</head>
+
+<body>
+    <button id="empty">초기화 (empty)</button>
+    <button id="remove">삭제 (remove)</button>
+
+    <button id="append">추가(append)</button>
+    <button id="html">수정 - 바꿔치기(html)</button>
+    <button id="html2">수정 - 붙이기(html)</button>
+    <hr>
+    <div id="myDiv">
+        <p>Java</p>
+        <p>HTML</p>
+        <p>CSS</p>
+    </div>
+    <hr>
+    <h2>div 다음에 있는 h2 태그</h2>
+    <br><br><br><br><br><br>
+
+</body>
+
+
+
+
+
+
+</html>
